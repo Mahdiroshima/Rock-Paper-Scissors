@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        function computerPlay() {
+            var i = Math.floor(Math.random() * 3);
+            var list = ['rock', 'paper', 'scissor'];
+            return list[i];
+        }
+        function playRound(playerSelection, computerSelection) {
+            playerSelection = playerSelection.toLowerCase();
+            switch (true) {
+                //Lose
+                case playerSelection == 'rock' && computerSelection == 'paper':
+                    res = 'You lose! Paper beats Rock';
+                    break;
+                case playerSelection == 'paper' && computerSelection == 'scissor':
+                    res = 'You lose! Scissor beats Paper';
+                    break;
+                case playerSelection == 'scissor' && computerSelection == 'rock':
+                    res = 'You lose! scissor beats Rock';
+                    break;
+                //Win
+                case playerSelection == 'rock' && computerSelection == 'scissor':
+                    res = 'You win! Rock beats Scissor';
+                    break;
+                case playerSelection == 'paper' && computerSelection == 'rock':
+                    res = 'You win! Paper beats Rock';
+                    break;
+                case playerSelection == 'scissor' && computerSelection == 'paper':
+                    res = 'You Win! scissor beats Paper';
+                    break;
+                default: res = 'It is a Tie';
+            }
+            return res;
+        }
+        function game() {
+            let i = 0, win = 0, lose = 0;
+            while (i < 5) {
+                const playerSelection = prompt("What is your choice?")
+                const computerSelection = computerPlay()
+                var s = playRound(playerSelection, computerSelection);
+                console.log(s)
+                if (s.includes('lose')) {
+                    lose = lose + 1;
+                } else if (s.includes('win')) {
+                    win = win + 1;
+                }
+                i = i + 1;
+            }
+            console.log('Score: ' + win + ' : ' + lose);
+        }
+        game();
+
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
